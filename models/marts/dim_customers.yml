@@ -1,0 +1,32 @@
+models:
+- name: dim_customers
+  description: This model consolidates customer information with their order history,
+    providing insights into customer behavior and spending patterns. It includes details
+    such as the customer's first and last order dates, total spending, and whether
+    they are a return customer.
+  columns:
+  - name: customer_id
+    description: A unique identifier for each customer.
+    data_tests:
+      - unique
+      - not_null
+  - name: customer_name
+    description: The name of the customer.
+    data_tests:
+      - not_null
+  - name: total_location_visits
+    description: The total number of visits a customer has made to any store location.
+  - name: count_unique_location_visits
+    description: The number of unique store locations a customer has visited.
+  - name: total_spend_pretax
+    description: The total amount spent by the customer before tax.
+  - name: total_tax_paid
+    description: The total amount of tax paid by the customer.
+  - name: total_spend
+    description: The total amount spent by the customer including tax.
+  - name: is_return_customer
+    description: Indicates whether the customer has made more than one order.
+  - name: first_ordered_at
+    description: The date and time when the customer placed their first order.
+  - name: last_ordered_at
+    description: The date and time when the customer placed their most recent order.
