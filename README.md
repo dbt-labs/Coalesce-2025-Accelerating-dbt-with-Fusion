@@ -6,7 +6,7 @@ This is a sandbox project for exploring the basic functionality and latest featu
 It's based on a fictional restaurant called the Jaffle Shop that serves [jaffles](https://en.wikipedia.org/wiki/Pie_iron).
 
 The source and staging layers have already been built for you.
-Apart from dim_customers, the other fact and dimension tables in the marts layer have purposely been left blank. This is to enable you to play around with dbt Fusion while developing.
+Intentionally, only the dim_customers in the marts layer has been built for you. This is to enable you to play around with dbt Fusion while developing.
 Fact and dimension tables aim to answer potential business questions that may arise.
 
 The facts represent an event (i.e. an order placed, a project created, etc.)

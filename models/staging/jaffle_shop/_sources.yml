@@ -11,13 +11,11 @@ sources:
       - name: orders
         identifier: raw_orders
         description: One record per order (consisting of one or more order items)
-        loaded_at_field: ordered_at
       - name: order_items
         identifier: raw_order_items
         description: Items included in an order
       - name: stores
         identifier: raw_stores
-        loaded_at_field: opened_at
       - name: products
         identifier: raw_products
         description: One record per SKU for items sold in stores

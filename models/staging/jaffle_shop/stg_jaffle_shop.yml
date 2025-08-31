@@ -27,15 +27,17 @@ models:
         data_tests:
           - not_null
           - relationships:
-              field: order_id
-              to: ref('stg_jaffle_shop__orders')
+              arguments:
+                to: ref('stg_jaffle_shop__orders')
+                field: order_id
       - name: product_id
         description: "{{ doc('stg_jaffle_shop__product_id') }}"
         data_tests:
           - not_null
           - relationships:
-              field: product_id
-              to: ref('stg_jaffle_shop__products')
+               arguments:
+                to: ref('stg_jaffle_shop__products')
+                field: product_id
 
   - name: stg_jaffle_shop__orders
     description: "{{ doc('stg_jaffle_shop__orders') }}"
