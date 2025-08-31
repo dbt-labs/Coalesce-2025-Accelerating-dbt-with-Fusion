@@ -1,0 +1,137 @@
+models:
+  - name: stg_jaffle_shop__customers
+    description: "{{ doc('stg_jaffle_shop__customers') }}"
+    columns:
+      - name: customer_id
+        description: "{{ doc('stg_jaffle_shop__customer_id') }}"
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_name
+        data_type: varchar
+        description: "{{ doc('stg_jaffle_shop__customers__customer_name') }}"
+        data_tests:
+          - not_null
+
+  - name: stg_jaffle_shop__order_items
+    description: "{{ doc('stg_jaffle_shop__order_items') }}"
+    columns:
+      - name: order_item_id
+        description: "{{ doc('stg_jaffle_shop__order_items__order_item_id') }}"
+        data_tests:
+          - unique
+          - not_null
+      - name: order_id
+        data_type: varchar
+        description: "{{ doc('stg_jaffle_shop__order_id') }}"
+        data_tests:
+          - not_null
+          - relationships:
+              field: order_id
+              to: ref('stg_jaffle_shop__orders')
+      - name: product_id
+        description: "{{ doc('stg_jaffle_shop__product_id') }}"
+        data_tests:
+          - not_null
+          - relationships:
+              field: product_id
+              to: ref('stg_jaffle_shop__products')
+
+  - name: stg_jaffle_shop__orders
+    description: "{{ doc('stg_jaffle_shop__orders') }}"
+    columns:
+      - name: order_id
+        description: "{{ doc('stg_jaffle_shop__order_id') }}"
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "{{ doc('stg_jaffle_shop__customer_id') }}"
+        data_tests:
+          - not_null
+      - name: store_id
+        description: "{{ doc('stg_jaffle_shop__store_id') }}"
+        data_tests:
+          - not_null
+      - name: subtotal_cents
+        data_tests:
+          - not_null
+      - name: tax_paid_cents
+        data_tests:
+          - not_null
+      - name: order_total_cents
+        data_tests:
+          - not_null
+      - name: subtotal
+        data_tests:
+          - not_null
+      - name: tax_paid
+        data_tests:
+          - not_null
+      - name: order_total
+        data_tests:
+          - not_null
+      - name: ordered_at
+        data_tests:
+          - not_null
+  
+  - name: stg_jaffle_shop__products
+    description: "{{ doc('stg_jaffle_shop__products') }}"
+    columns:
+      - name: product_id
+        description: "{{ doc('stg_jaffle_shop__product_id') }}"
+        data_tests:
+          - unique
+          - not_null
+      - name: product_name
+        data_tests:
+          - not_null
+      - name: product_type
+        data_tests:
+          - not_null
+      - name: product_description
+      - name: product_price
+        data_tests:
+          - not_null
+  
+  - name: stg_jaffle_shop__stores
+    description: "{{ doc('stg_jaffle_shop__stores') }}"
+    columns:
+      - name: store_id
+        description: "{{ doc('stg_jaffle_shop__store_id') }}"
+        data_tests:
+          - unique
+          - not_null
+      - name: store_location
+        data_tests:
+          - not_null
+      - name: opened_at
+        data_tests:
+          - not_null
+      - name: tax_rate
+        data_tests:
+          - not_null
+  
+  - name: stg_jaffle_shop__supplies
+    description: "{{ doc('stg_jaffle_shop__supplies') }}"
+    columns:
+      - name: supply_uuid
+        data_tests:
+          - unique
+          - not_null
+      - name: supply_id
+        data_tests:
+          - not_null
+      - name: product_id
+        description: "{{ doc('stg_jaffle_shop__product_id') }}"
+        data_tests:
+          - not_null
+      - name: supply_name
+        data_tests:
+          - not_null
+      - name: supply_cost
+        data_tests:
+          - not_null
+      - name: is_perishable_supply
+        data_tests:
+          - not_null
