@@ -1,6 +1,14 @@
-# 🥪 The Jaffle Shop 🦘
+# Welcome to the Accelerating dbt with Fusion Workshop! 
 
-Welcome to your new dbt project!
+### Getting Started:
+
+1. If you already have a dbt account, log out first.
+2. Sign up for a new account: https://cloud.getdbt.com/coalesce-workshop-signup
+3. Fill out the form, choosing the Accelerating dbt with Fusion workshop. You will be provided a password to use for this Coalesce workshop!
+4. Submitting the form will launch dbt. Launch dbt Studio.
+5. Try running dbt build in the command bar at the bottom of your IDE.
+
+### 🥪 The Jaffle Shop 🦘
 
 This is a sandbox project for exploring the basic functionality and latest features of dbt Fusion. 
 It's based on a fictional restaurant called the Jaffle Shop that serves [jaffles](https://en.wikipedia.org/wiki/Pie_iron).
