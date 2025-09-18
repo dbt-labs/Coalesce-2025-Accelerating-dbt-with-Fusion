@@ -2,6 +2,7 @@ version: 2
 
 sources:
   - name: jaffle_shop
+    database: accelerating_fusion
     schema: raw
     description: Ecommerce data for the Jaffle Shop
     tables:
