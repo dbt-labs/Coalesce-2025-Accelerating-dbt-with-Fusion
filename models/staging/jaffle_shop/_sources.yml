@@ -2,8 +2,8 @@ version: 2
 
 sources:
   - name: jaffle_shop
-    database: accelerating_fusion
-    schema: raw
+    database: raw
+    schema: accelerating_fusion
     description: Ecommerce data for the Jaffle Shop
     tables:
       - name: customers
