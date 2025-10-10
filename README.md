@@ -3,7 +3,7 @@
 ### Getting Started:
 
 1. If you already have a dbt account, log out first.
-2. Sign up for a new account: https://cloud.getdbt.com/coalesce-workshop-signup
+2. Sign up for a new account: https://workshops.us1.dbt.com/workshop
 3. Fill out the form, choosing the Accelerating dbt with Fusion workshop. You will be provided a password to use for this Coalesce workshop!
 4. Submitting the form will launch dbt. Launch dbt Studio.
 5. Try running dbt build in the command bar at the bottom of your IDE.
