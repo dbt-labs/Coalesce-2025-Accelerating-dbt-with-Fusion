@@ -6,10 +6,21 @@ customers as (
 
 ),
 
+
 orders as (
 
     select * from {{ ref('stg_jaffle_shop__orders') }}
 
+),
+
+
+
+avg_orders_by_customers as (
+    select 
+        orders.customer_id,
+        avg(order_total)
+        from orders 
+        group by 1
 ),
 
 customer_orders_summary as (
