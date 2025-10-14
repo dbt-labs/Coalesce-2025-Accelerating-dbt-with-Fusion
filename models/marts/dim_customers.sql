@@ -12,6 +12,14 @@ orders as (
 
 ),
 
+avg_orders_by_customer as (
+    select
+        customer_id,
+        avg(order_total) as avg_orders
+    from orders
+    group by 1
+),
+
 customer_orders_summary as (
 
     select 
@@ -24,8 +32,7 @@ customer_orders_summary as (
         count(distinct orders.store_id) as count_unique_location_visits,
         sum(orders.subtotal) as total_spend_pretax,
         sum(orders.tax_paid) as total_tax_paid,
-        sum(orders.order_total) as total_spend
-
+        sum(orders.order_total) as total_spend,
 
     from orders
 
@@ -58,9 +65,10 @@ final as (
         last_ordered_at
 
     from customers
-
     left join customer_orders_summary
         on customers.customer_id = customer_orders_summary.customer_id
+    left join avg_orders_by_customer
+        on customers.customer_id = avg_orders_by_customer.customer_id
 
 )
 
