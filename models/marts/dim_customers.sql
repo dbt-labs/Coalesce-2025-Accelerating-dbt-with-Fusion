@@ -12,6 +12,11 @@ orders as (
 
 ),
 
+avg_cte as 
+(
+    select avg
+)
+
 customer_orders_summary as (
 
     select 
