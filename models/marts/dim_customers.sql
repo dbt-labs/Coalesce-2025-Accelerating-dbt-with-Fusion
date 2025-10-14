@@ -12,6 +12,14 @@ orders as (
 
 ),
 
+avg_orders_by_customer as (
+    select
+        customer_id
+        , round(avg(order_total), 2) as average_order_total
+    from orders
+    group by 1
+),
+
 customer_orders_summary as (
 
     select 
