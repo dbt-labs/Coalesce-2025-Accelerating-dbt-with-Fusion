@@ -1,0 +1,6 @@
+models:
+- name: dim_locations
+  description: This model provides a dimensional view of location data, which can
+    be used for geographical analysis and reporting. It aggregates and organizes location-related
+    information to support business intelligence and decision-making processes.
+  columns: []

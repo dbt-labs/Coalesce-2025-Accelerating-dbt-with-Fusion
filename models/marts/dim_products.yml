@@ -1,0 +1,17 @@
+models:
+- name: dim_products
+  description: This model provides a detailed view of products, including their identifiers,
+    names, types, descriptions, and prices. It serves as a reference for product-related
+    data, facilitating analysis and reporting on product offerings.
+  columns:
+  - name: product_id
+    description: A unique identifier for each product.
+  - name: product_name
+    description: The name of the product.
+  - name: product_type
+    description: The category or classification of the product.
+  - name: product_description
+    description: A detailed description of the product.
+  - name: product_price
+    description: The price of the product, represented as a numeric value with two
+      decimal places.
