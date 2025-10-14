@@ -12,6 +12,13 @@ orders as (
 
 ),
 
+avg_orders_by_customers as (
+    select *
+
+    from orders
+
+),
+
 customer_orders_summary as (
 
     select 
