@@ -14,10 +14,8 @@ orders as (
 
 avg_orders_by_customer as (
     select
-        customer_id
-        , round(avg(order_total), 2) as average_order_total
+        *
     from orders
-    group by 1
 ),
 
 customer_orders_summary as (
@@ -32,8 +30,8 @@ customer_orders_summary as (
         count(distinct orders.store_id) as count_unique_location_visits,
         sum(orders.subtotal) as total_spend_pretax,
         sum(orders.tax_paid) as total_tax_paid,
-        sum(orders.order_total) as total_spend
-
+        sum(orders.order_total) as total_spend,
+        round(avg(orders.order_total), 2) as average_order_value
 
     from orders
 
@@ -57,6 +55,7 @@ final as (
         total_spend_pretax,
         total_tax_paid,
         total_spend,
+        average_order_value,
 
         -- boolean
         is_return_customer,

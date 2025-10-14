@@ -24,6 +24,8 @@ models:
     description: The total amount of tax paid by the customer.
   - name: total_spend
     description: The total amount spent by the customer including tax.
+  - name: average_order_value
+    description: The average dollars spent per order by this customer.
   - name: is_return_customer
     description: Indicates whether the customer has made more than one order.
   - name: first_ordered_at
