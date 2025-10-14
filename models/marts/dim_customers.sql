@@ -33,6 +33,19 @@ customer_orders_summary as (
 
 ),
 
+-- average_orders_by_customer as (
+--     select * from orders
+-- ),
+
+average_orders_by_customer as (
+    select
+        customer_id,
+        avg(order_total)
+    from orders
+    GROUP BY 1
+),
+
+
 final as (
 
     select
