@@ -24,7 +24,8 @@ customer_orders_summary as (
         count(distinct orders.store_id) as count_unique_location_visits,
         sum(orders.subtotal) as total_spend_pretax,
         sum(orders.tax_paid) as total_tax_paid,
-        sum(orders.order_total) as total_spend
+        sum(orders.order_total) as total_spend,
+        count(distinct store_id) as total_stores
 
 
     from orders
@@ -49,6 +50,7 @@ final as (
         total_spend_pretax,
         total_tax_paid,
         total_spend,
+        total_stores,
 
         -- boolean
         is_return_customer,

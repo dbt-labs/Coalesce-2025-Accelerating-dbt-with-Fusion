@@ -23,10 +23,13 @@ with src as (
 
 , most_pop_customer as (
     select store_id
+        , customer_id
+        , customer_name
         , count(order_id) as order_cnt
         , dense_rank() over (partition by store_id order by order_cnt desc) as order_rank
     from customer_orders
-    group by store_id
+    group by store_id, customer_id, customer_name
+    qualify order_rank = 1
 )
 
 select 
@@ -34,5 +37,7 @@ select
     , opened_at as open_dt
     , store_location as location
     , tax_rate
+    , customer_id as most_popular_customer_id
+    , customer_name as most_popular_customer
 from src
 join most_pop_customer m on m.store_id = src.store_id and order_rank = 1
