@@ -1,67 +1,64 @@
-with 
+with
 
-customers as (
+    customers as (select * from {{ ref("stg_jaffle_shop__customers") }}),
 
-    select * from {{ ref('stg_jaffle_shop__customers') }}
+    orders as (select * from {{ ref("stg_jaffle_shop__orders") }}),
 
-),
+    avg_orders_by_customer as (
+        select customer_id, avg(order_total) from orders group by customer_id
+    ),
 
-orders as (
+    customer_orders_summary as (
 
-    select * from {{ ref('stg_jaffle_shop__orders') }}
+        select
 
-),
+            orders.customer_id,
+            min(orders.ordered_at) as first_ordered_at,
+            max(orders.ordered_at) as last_ordered_at,
+            count(distinct orders.order_id) > 1 as is_return_customer,
+            count(orders.store_id) as total_location_visits,
+            count(distinct orders.store_id) as count_unique_location_visits,
+            sum(orders.subtotal) as total_spend_pretax,
+            sum(orders.tax_paid) as total_tax_paid,
+            sum(orders.order_total) as total_spend
 
-customer_orders_summary as (
+        from orders
 
-    select 
+        group by orders.customer_id
 
-        orders.customer_id,
-        min(orders.ordered_at) as first_ordered_at,
-        max(orders.ordered_at) as last_ordered_at,
-        count(distinct orders.order_id) > 1 as is_return_customer,
-        count(orders.store_id) as total_location_visits,
-        count(distinct orders.store_id) as count_unique_location_visits,
-        sum(orders.subtotal) as total_spend_pretax,
-        sum(orders.tax_paid) as total_tax_paid,
-        sum(orders.order_total) as total_spend
+    ),
 
+    final as (
 
-    from orders
+        select
 
-    group by orders.customer_id
+            -- primary key
+            customers.customer_id,
 
-),
+            -- details
+            customers.customer_name,
 
-final as (
+            -- numerics
+            total_location_visits,
+            count_unique_location_visits,
+            total_spend_pretax,
+            total_tax_paid,
+            total_spend,
 
-    select
-    
-        -- primary key
-        customers.customer_id,
+            -- boolean
+            is_return_customer,
 
-        -- details
-        customers.customer_name,
+            -- dates/timestamps
+            first_ordered_at,
+            last_ordered_at
 
-        -- numerics
-        total_location_visits,
-        count_unique_location_visits,
-        total_spend_pretax,
-        total_tax_paid,
-        total_spend,
+        from customers
 
-        -- boolean
-        is_return_customer,
+        left join
+            customer_orders_summary
+            on customers.customer_id = customer_orders_summary.customer_id
 
-        -- dates/timestamps
-        first_ordered_at,
-        last_ordered_at
+    )
 
-    from customers
-
-    left join customer_orders_summary
-        on customers.customer_id = customer_orders_summary.customer_id
-
-)
-
-select * from final
+select *
+from final
