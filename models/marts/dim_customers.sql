@@ -12,6 +12,15 @@ orders as (
 
 ),
 
+average_orders_by_customer as (
+
+    select 
+      customer_id,
+      avg(order_total) AS avg_total
+    FROM orders
+    group by 1
+),
+
 customer_orders_summary as (
 
     select 
