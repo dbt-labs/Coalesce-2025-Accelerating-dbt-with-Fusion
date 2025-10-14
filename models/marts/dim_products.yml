@@ -1,0 +1,36 @@
+models:
+- name: dim_products
+  description: This model contains product information including details about each product's 
+    identification, attributes, and pricing.
+  columns:
+  - name: product_id
+    description: A unique identifier for each product (derived from SKU).
+    data_tests:
+      - unique
+      - not_null
+  - name: product_name
+    description: The name of the product.
+    data_tests:
+      - not_null
+  - name: product_type
+    description: The category or type classification of the product.
+  - name: product_description
+    description: A detailed description of the product.
+  - name: product_price
+    description: The price of the product converted from cents to dollars.
+    data_tests:
+      - not_null
+  - name: valid_from
+    description: The date from which the product information is valid.
+    data_tests:
+      - not_null
+  - name: valid_to
+    description: The date until which the product information is valid.
+  - name: created_at
+    description: The timestamp when the product record was created.
+  - name: updated_at
+    description: The timestamp when the product record was last updated.
+  - name: is_active
+    description: A flag indicating whether the product is currently active.
+    data_tests:
+      - not_null

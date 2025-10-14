@@ -51,6 +51,7 @@ final as (
         total_spend_pretax,
         total_tax_paid,
         total_spend,
+        avg_spend,
 
         -- boolean
         is_return_customer,
