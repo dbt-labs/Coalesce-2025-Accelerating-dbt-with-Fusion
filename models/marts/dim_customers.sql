@@ -12,6 +12,16 @@ orders as (
 
 ),
 
+avg_orders as (
+
+    select
+        customer_id,
+        avg(order_total)
+    from orders
+    group by 1
+
+),
+
 customer_orders_summary as (
 
     select 
@@ -61,6 +71,8 @@ final as (
 
     left join customer_orders_summary
         on customers.customer_id = customer_orders_summary.customer_id
+    left join avg_orders   
+        on customers.customer_id = avg_orders.customer_id
 
 )
 
