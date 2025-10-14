@@ -12,7 +12,15 @@ orders as (
 
 ),
 
-customer_orders_summary as (
+average_customer_orders as (
+    select 
+        customer_id
+        , avg(order_total)
+    from orders
+    group by 1
+)
+
+, customer_orders_summary as (
 
     select 
 
@@ -25,8 +33,6 @@ customer_orders_summary as (
         sum(orders.subtotal) as total_spend_pretax,
         sum(orders.tax_paid) as total_tax_paid,
         sum(orders.order_total) as total_spend
-
-
     from orders
 
     group by orders.customer_id
