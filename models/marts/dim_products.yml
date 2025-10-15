@@ -1,0 +1,22 @@
+models:
+- name: dim_products
+  description: This model provides a comprehensive view of product details, including
+    identifiers, names, types, pricing, and order-related metrics. It is designed
+    to support analysis of product performance and sales trends over time.
+  columns:
+  - name: product_id
+    description: A unique identifier for each product.
+  - name: product_name
+    description: The name of the product.
+  - name: product_type
+    description: The category or type of the product.
+  - name: product_price
+    description: The price of the product.
+  - name: first_order
+    description: The timestamp of the first order for the product.
+  - name: most_recent_order
+    description: The timestamp of the most recent order for the product.
+  - name: order_count
+    description: The total number of orders for the product.
+  - name: product_revenue
+    description: The total revenue generated from the product.
