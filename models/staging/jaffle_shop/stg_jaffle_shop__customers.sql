@@ -10,7 +10,7 @@ final as (
 
     select 
         -- primary key
-        id as customer_id_demo,
+        id as customer_id,
 
         -- details
         name as customer_name
