@@ -1,0 +1,13 @@
+models:
+- name: dim_locations
+  description: This model consolidates location information.
+  columns:
+  - name: LOCATION_ID
+    description: A unique identifier for each location.
+    data_tests:
+      - unique
+      - not_null
+  - name: LOCATION_DESC
+    description: The name of the location.
+    data_tests:
+      - not_null
