@@ -9,4 +9,4 @@ with PRODUCTS as (
      from {{ ref('stg_jaffle_shop__products') }}
 
 )
-SELECT * FROM PRODUCTS;
+SELECT * FROM PRODUCTS
