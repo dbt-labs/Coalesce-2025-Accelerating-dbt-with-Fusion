@@ -1,0 +1,6 @@
+models:
+- name: dim_locations
+  description: This model stores the location of the store
+  columns:
+  - name: STORE_LOCATION
+    description: A unique identifier for each location.
