@@ -5,7 +5,7 @@ order_items as (
     select * from {{ source('jaffle_shop', 'order_items') }}
 
 ),
-
+ 
 final as (
 
     select
