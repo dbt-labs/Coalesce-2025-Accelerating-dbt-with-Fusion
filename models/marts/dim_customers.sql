@@ -17,7 +17,7 @@ customer_orders_summary as (
     select 
 
         orders.customer_id,
-        min(orders.ordered_at) as first_ordered_at,
+        min(orders.ordered_at) as first_ordered_at0,
         max(orders.ordered_at) as last_ordered_at,
         count(distinct orders.order_id) > 1 as is_return_customer,
         count(orders.store_id) as total_location_visits,
@@ -54,7 +54,7 @@ final as (
         is_return_customer,
 
         -- dates/timestamps
-        first_ordered_at,
+        first_ordered_at0,
         last_ordered_at
 
     from customers
