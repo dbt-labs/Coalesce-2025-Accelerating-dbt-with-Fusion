@@ -11,6 +11,11 @@ orders as (
     select * from {{ ref('stg_jaffle_shop__orders') }}
 
 ),
+avg_orbder_by_customer as (
+    select 
+    customer_id,
+    from orders
+),
 
 customer_orders_summary as (
 
