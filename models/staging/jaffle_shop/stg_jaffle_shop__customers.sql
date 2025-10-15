@@ -13,7 +13,7 @@ final as (
         id as customer_id,
 
         -- details
-        name as customer_name
+        name as customer_name 
 
     from customers
 
