@@ -31,37 +31,6 @@ customer_orders_summary as (
 
     group by orders.customer_id
 
-),
-
-final as (
-
-    select
-    
-        -- primary key
-        customers.customer_id,
-
-        -- details
-        customers.customer_name,
-
-        -- numerics
-        total_location_visits,
-        count_unique_location_visits,
-        total_spend_pretax,
-        total_tax_paid,
-        total_spend,
-
-        -- boolean
-        is_return_customer,
-
-        -- dates/timestamps
-        first_ordered_at,
-        last_ordered_at
-
-    from customers
-
-    left join customer_orders_summary
-        on customers.customer_id = customer_orders_summary.customer_id
-
 )
 
-select * from final
+select * from customer_orders_summary
