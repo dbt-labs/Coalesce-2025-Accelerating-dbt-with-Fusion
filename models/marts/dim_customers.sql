@@ -46,8 +46,8 @@ final as (
         -- numerics
         total_location_visits,
         count_unique_location_visits,
-        total_spend_pretax,
-        total_tax_paid,
+        total_spend_pretax as pretax,
+        total_tax_paid as tax,
         total_spend,
 
         -- boolean
