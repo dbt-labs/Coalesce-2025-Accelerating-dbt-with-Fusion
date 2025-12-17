@@ -1,0 +1,47 @@
+models:
+- name: agg_monthly_gross_revenue
+  description: This model aggregates monthly gross revenue data, providing insights
+    into revenue trends and patterns over time. It is useful for financial analysis
+    and reporting.
+  columns:
+  - name: order_id
+    description: A unique identifier for each order.
+    data_tests:
+      - unique
+      - not_null
+  - name: customer_id
+    description: The unique identifier for the customer who placed the order.
+    data_tests:
+      - not_null
+  - name: store_id
+    description: The unique identifier for the store where the order was placed.
+    data_tests:
+      - not_null
+  - name: subtotal_cents
+    description: The subtotal amount of the order in cents, before taxes.
+    data_tests:
+      - not_null
+  - name: tax_paid_cents
+    description: The amount of tax paid for the order in cents.
+    data_tests:
+      - not_null
+  - name: order_total_cents
+    description: The total amount of the order in cents, including taxes.
+    data_tests:
+      - not_null
+  - name: subtotal
+    description: The subtotal amount of the order in dollars, before taxes.
+    data_tests:
+      - not_null
+  - name: tax_paid
+    description: The amount of tax paid for the order in dollars.
+    data_tests:
+      - not_null
+  - name: order_total
+    description: The total amount of the order in dollars, including taxes.
+    data_tests:
+      - not_null
+  - name: ordered_at
+    description: The timestamp when the order was placed.
+    data_tests:
+      - not_null
