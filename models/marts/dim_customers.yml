@@ -1,5 +1,10 @@
 models:
 - name: dim_customers
+  config:
+    freshness:
+      build_after:
+        count: 3
+        period: hour
   description: This model consolidates customer information with their order history,
     providing insights into customer behavior and spending patterns. It includes details
     such as the customer's first and last order dates, total spending, and whether
