@@ -1,6 +1,11 @@
 models:
   - name: stg_jaffle_shop__customers
     description: "{{ doc('stg_jaffle_shop__customers') }}"
+    config:
+      freshness:
+        build_after:
+          count: 2
+          period: minute
     columns:
       - name: customer_id
         description: "{{ doc('stg_jaffle_shop__customer_id') }}"
