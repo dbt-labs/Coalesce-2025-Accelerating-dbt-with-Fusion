@@ -1,0 +1,33 @@
+models:
+  - name: task_2_fct_store_daily_buggy
+    columns:
+      - name: store_id
+        data_tests:
+          - not_null
+      - name: store_location
+        data_tests:
+          - not_null
+      - name: tax_rate
+        data_tests:
+          - not_null
+      - name: order_date
+        data_tests:
+          - not_null
+      - name: orders_count
+        data_tests:
+          - not_null
+      - name: daily_subtotal
+        data_tests:
+          - not_null
+      - name: daily_tax_paid
+        data_tests:
+          - not_null
+      - name: daily_order_total
+        data_tests:
+          - not_null
+      - name: avg_order_total
+        data_tests:
+          - not_null
+      - name: days_since_store_open
+        data_tests:
+          - not_null
