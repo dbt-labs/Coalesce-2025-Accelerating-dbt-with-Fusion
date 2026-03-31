@@ -8,7 +8,7 @@ with orders as (
         subtotal,
         tax_paid,
         order_total
-    from {{ ref('stg_jaffle_shop__order') }}
+    from {{ ref('stg_jaffle_shop__orders') }}
 
 ),
 
@@ -17,7 +17,7 @@ stores as (
     select
         store_id,
         store_location,
-        taxrate
+        tax_rate
     from {{ ref('stg_jaffle_shop__stores') }}
 
 ),
@@ -39,7 +39,7 @@ item_rollup as (
         count(distinct order_item_id) as items_count,
         count(product_id) as distinct_products_count
     from order_items
-    group by order_id, product_id
+    group by order_id
 
 ),
 
