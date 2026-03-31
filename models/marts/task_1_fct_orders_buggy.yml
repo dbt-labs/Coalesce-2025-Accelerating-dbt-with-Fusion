@@ -1,0 +1,23 @@
+models:
+  - name: task_1_fct_orders_buggy
+    columns:
+      - name: task_1_fct_orders_buggy_id
+        data_tests:
+          - unique
+          - not_null
+      - name: status
+        data_tests:
+          - accepted_values:
+              values: ['placed', 'shipped', 'completed', 'returned']
+      - name: customer_id
+        data_tests:
+          - not_null
+      - name: created_at
+        data_tests:
+          - not_null
+      - name: updated_at
+        data_tests:
+          - not_null
+      - name: order_date
+        data_tests:
+          - not_null

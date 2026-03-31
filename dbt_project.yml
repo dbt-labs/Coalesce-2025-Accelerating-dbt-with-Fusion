@@ -18,6 +18,7 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "dbt_packages"
 
 models:
+  +static_analysis: 'strict'
   my_new_project:
     staging:
       +materialized: view
