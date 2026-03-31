@@ -22,14 +22,14 @@ stores as (
     from {{ ref('stg_jaffle_shop__stores') }}
 
 ),
-
+ 
 daily_rollup as (
 
     select
         orders.store_id,
         stores.store_location,
         stores.tax_rate,
-        date_trunc('day', orders.ordered_at) as order_date,
+        date_trunc('day', cast(orders.ordered_at as date)) as order_date,
 
         count(orders.order_id) as orders_count,
         sum(coalesce(orders.subtotal,0)) as daily_subtotal,
@@ -38,8 +38,8 @@ daily_rollup as (
 
         daily_order_total / orders_count as avg_order_total,
 
-        datediff('day', date_trunc('day','stores.opened_at'), 
-        date_trunc('day',orders.ordered_at)) as days_since_store_open
+        datediff('day', date_trunc('day',cast(stores.opened_at as date)), 
+        date_trunc('day',cast(orders.ordered_at as date))) as days_since_store_open
 
     from orders
     left join stores
@@ -47,8 +47,8 @@ daily_rollup as (
 
     group by
        orders.store_id,
-       date_trunc('day',orders.ordered_at),
-       date_trunc('day',stores.opened_at),
+       date_trunc('day',cast(orders.ordered_at as date)),
+       date_trunc('day',cast(stores.opened_at as date)),
        order_date,
        store_location,
        tax_rate

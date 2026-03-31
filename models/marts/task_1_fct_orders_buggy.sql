@@ -49,7 +49,7 @@ joined as (
         orders.order_id,
         orders.customer_id,
         orders.store_id,
-        date_trunc('day', orders.ordered_at) as order_date,
+        date_trunc('day', cast(orders.ordered_at as date)) as order_date,
 
         orders.subtotal,
         orders.tax_paid,
@@ -70,10 +70,9 @@ joined as (
         on orders.store_id = stores.store_id
 
     left join item_rollup
-        on order_items.order_id = item_rollup.order_id
+        on orders.order_id = item_rollup.order_id
 
 )
 
-select *
-from joined
+select * from joined
 order by order_date desc, order_id
