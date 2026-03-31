@@ -1,0 +1,57 @@
+models:
+- name: task_1_fct_orders_buggy
+  description: This model consolidates order data from various sources, providing
+    a comprehensive view of each order, including customer and store details, item
+    counts, and tax calculations. It is useful for analyzing order trends, tax discrepancies,
+    and store performance.
+  columns:
+  - name: order_id
+    description: A unique identifier for each order.
+    data_tests:
+      - unique
+      - not_null
+  - name: customer_id
+    description: The identifier for the customer who placed the order.
+    data_tests:
+      - not_null
+  - name: store_id
+    description: The identifier for the store where the order was placed.
+    data_tests:
+      - not_null
+  - name: order_date
+    description: The date when the order was placed.
+    data_tests:
+      - not_null
+  - name: subtotal
+    description: The total amount of the order before tax.
+    data_tests:
+      - not_null
+  - name: tax_paid
+    description: The amount of tax paid for the order.
+    data_tests:
+      - not_null
+  - name: order_total
+    description: The total amount of the order including tax.
+    data_tests:
+      - not_null
+  - name: store_location
+    description: The location of the store where the order was placed.
+  - name: tax_rate
+    description: The tax rate applicable at the store location.
+  - name: items_count
+    description: The total number of items in the order.
+    data_tests:
+      - not_null
+  - name: distinct_products_count
+    description: The number of distinct products in the order.
+    data_tests:
+      - not_null
+  - name: expected_tax
+    description: The expected tax amount calculated based on the subtotal and tax
+      rate.
+    data_tests:
+      - not_null
+  - name: tax_delta
+    description: The difference between the tax paid and the expected tax.
+    data_tests:
+      - not_null
