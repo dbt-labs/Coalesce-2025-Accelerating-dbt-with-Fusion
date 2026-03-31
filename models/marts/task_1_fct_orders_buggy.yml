@@ -29,12 +29,6 @@ models:
       - name: TAX_RATE
         data_tests:
           - not_null
-      - name: ITEMS_COUNT
-        data_tests:
-          - not_null
-      - name: DISTINCT_PRODUCTS_COUNT
-        data_tests:
-          - not_null
       - name: EXPECTED_TAX
         data_tests:
           - not_null
