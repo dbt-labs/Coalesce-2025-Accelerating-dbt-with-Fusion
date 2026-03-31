@@ -36,10 +36,10 @@ item_rollup as (
 
     select
         order_id,
-        count(distinct order_item_id) as items_count,
-        count(product_id) as distinct_products_count
+        count(order_item_id) as items_count,
+        count(distinct product_id) as distinct_products_count
     from order_items
-    group by order_id, product_id
+    group by order_id
 
 ),
 
