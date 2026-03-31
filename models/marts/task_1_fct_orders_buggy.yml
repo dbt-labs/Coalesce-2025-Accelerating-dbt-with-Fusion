@@ -1,0 +1,43 @@
+models:
+  - name: task_1_fct_orders_buggy
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+      - name: store_id
+        tests:
+          - not_null
+      - name: order_date
+        tests:
+          - not_null
+      - name: subtotal
+        tests:
+          - not_null
+      - name: tax_paid
+        tests:
+          - not_null
+      - name: order_total
+        tests:
+          - not_null
+      - name: store_location
+        tests:
+          - not_null
+      - name: tax_rate
+        tests:
+          - not_null
+      - name: items_count
+        tests:
+          - not_null
+      - name: distinct_products_count
+        tests:
+          - not_null
+      - name: expected_tax
+        tests:
+          - not_null
+      - name: tax_delta
+        tests:
+          - not_null
