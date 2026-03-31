@@ -41,6 +41,11 @@ models:
 
   - name: stg_jaffle_shop__orders
     description: "{{ doc('stg_jaffle_shop__orders') }}"
+      config: 
+        freshness: 
+          build_after: 
+            count: 2
+            period: minute
     columns:
       - name: order_id
         description: "{{ doc('stg_jaffle_shop__order_id') }}"
@@ -98,6 +103,10 @@ models:
   
   - name: stg_jaffle_shop__stores
     description: "{{ doc('stg_jaffle_shop__stores') }}"
+      config: 
+        freshness: 
+          build_after: 
+            updates_on: all
     columns:
       - name: store_id
         description: "{{ doc('stg_jaffle_shop__store_id') }}"
