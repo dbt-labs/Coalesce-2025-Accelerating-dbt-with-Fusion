@@ -39,7 +39,7 @@ item_rollup as (
         count(distinct order_item_id) as items_count,
         count(product_id) as distinct_products_count
     from order_items
-    group by order_id, product_id
+    group by order_id
 
 ),
 
