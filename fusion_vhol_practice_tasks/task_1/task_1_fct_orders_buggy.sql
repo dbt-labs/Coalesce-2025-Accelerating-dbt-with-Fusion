@@ -66,10 +66,10 @@ joined as (
 
     from orders
 
-    left join stores
+    join stores
         on orders.store_id = stores.store_id
 
-    left join item_rollup
+    join item_rollup
         on order_items.order_id = item_rollup.order_id
 
 )
