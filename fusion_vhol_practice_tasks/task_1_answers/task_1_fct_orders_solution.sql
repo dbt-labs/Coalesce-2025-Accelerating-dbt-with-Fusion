@@ -42,7 +42,7 @@ item_rollup as (
             -- ensures we count unique products per order
 
     from order_items
-    group by order_id                             
+    group by order_id                               
         -- FIX: removed product_id from GROUP BY
         -- original grouped by (order_id, product_id) which broke order grain
         -- rollup must be exactly one row per order_id
@@ -73,10 +73,10 @@ joined as (
 
     from orders
 
-    left join stores
+    join stores
         on orders.store_id = stores.store_id
 
-    left join item_rollup
+    join item_rollup
         on orders.order_id = item_rollup.order_id
         -- FIX: changed join condition from
         --      order_items.order_id = item_rollup.order_id
