@@ -4,6 +4,7 @@ with orders as (
         order_id,
         store_id,
         ordered_at,       -- FIX: corrected column name from orderedat -> ordered_at
+        date_trunc('day', ordered_at) as order_date,
         subtotal,         -- FIX: corrected column name from sub_total -> subtotal
         tax_paid,
         order_total
@@ -29,8 +30,7 @@ daily_rollup as (
         orders.store_id,
         stores.store_location,
         stores.tax_rate,
-        date_trunc('day', orders.ordered_at) as order_date,
-
+        orders.order_date,
         count(orders.order_id) as orders_count,
         sum(coalesce(orders.subtotal, 0)) as daily_subtotal,     
         sum(coalesce(orders.tax_paid, 0)) as daily_tax_paid,      
@@ -39,7 +39,7 @@ daily_rollup as (
         daily_order_total / nullif(orders_count, 0) as avg_order_total,
         -- FIX: guard against divide-by-zero using nullif
 
-        datediff('day', stores.opened_at, order_date) as days_since_store_open
+        datediff('day', stores.opened_at, orders.order_date) as days_since_store_open
         -- FIX: corrected argument order so result is non-negative
 
     from orders
@@ -50,7 +50,8 @@ daily_rollup as (
         orders.store_id,
         stores.store_location,  -- FIX: included non-aggregated selected columns in group by
         stores.tax_rate,        -- FIX: included non-aggregated selected columns in group by
-        order_date
+        stores.opened_at,        -- FIX: included non-aggregated selected columns in group by
+        orders.order_date
 
 )
 
