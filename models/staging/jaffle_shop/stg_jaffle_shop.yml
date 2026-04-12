@@ -103,6 +103,10 @@ models:
   
   - name: stg_jaffle_shop__stores
     description: "{{ doc('stg_jaffle_shop__stores') }}"
+    config: 
+      freshness: 
+        build_after: 
+          updates_on: all
     columns:
       - name: store_id
         description: "{{ doc('stg_jaffle_shop__store_id') }}"
