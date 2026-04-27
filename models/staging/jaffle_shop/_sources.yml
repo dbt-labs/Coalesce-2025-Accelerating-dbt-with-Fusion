@@ -12,6 +12,12 @@ sources:
       - name: orders
         identifier: raw_orders
         description: One record per order (consisting of one or more order items)
+        config: 
+          freshness: 
+            warn_after: 
+              count: 24
+              period: hour
+          loaded_at_field: ORDERED_AT
       - name: order_items
         identifier: raw_order_items
         description: Items included in an order
